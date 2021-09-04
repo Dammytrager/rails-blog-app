@@ -3,9 +3,6 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.0.0'
 
-#dotenv to load .env files
-gem 'dotenv-rails', groups: [:development, :test]
-
 gem 'rexml', '~> 3.2', '>= 3.2.4'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
@@ -39,7 +36,7 @@ group :development, :test do
 end
 
 group :development do
-  gem 'dotenv-rails'
+  gem 'dotenv-rails', '~> 2.1', '>= 2.1.1'
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 4.1.0'
   # Display performance information such as SQL time and flame graphs for each request in your browser.
@@ -51,7 +48,7 @@ group :development do
 end
 
 group :test do
-  gem 'dotenv-rails'
+  gem 'dotenv-rails', '~> 2.1', '>= 2.1.1'
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 3.26'
   gem 'selenium-webdriver'
