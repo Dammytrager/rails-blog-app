@@ -1,10 +1,30 @@
-<h2>Showing Article Details</h2>
+<h2 class="text-center mb-3">Showing Article Details</h2>
 
-<p><strong>Name: </strong> <%= @article.name %></p>
-<p><strong>Description: </strong> <%= @article.description %></p>
+<div class="container">
+  <div class="row mx-0">
+    <div class="col-md-6 offset-md-3">
+      <div class="card text-center mb-5">
+        <div class="card-header font-italic">
+          Created by Dammy
+        </div>
+        <div class="card-body">
+          <h5 class="card-title"><%= @article.name %></h5>
+          <p class="card-text"><%= @article.description %></p>
+          <%= link_to 'Edit', edit_article_path(@article), class: 'btn btn-sm btn-outline-warning' %>
+          <%= link_to 'Delete', article_path(@article), class: 'btn btn-sm btn-outline-danger', method: :delete, data: {confirm: 'Are you sure you want to delete?'} %>
+        </div>
 
-<p>
-  <%= link_to 'Edit', edit_article_path(@article) %> |
-  <%= link_to 'Delete', article_path(@article), method: :delete, data: {confirm: 'Are you sure you want to delete?', disable_with: "Processing..."} %> |
+        <div class="card-footer text-muted">
+          <small>
+            Created <%= time_ago_in_words(@article.created_at) %> ago,
+            Updated <%= time_ago_in_words(@article.updated_at) %> ago
+          </small>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<p class="text-center">
   <%= link_to 'Go to articles listings', articles_path %>
 </p>
