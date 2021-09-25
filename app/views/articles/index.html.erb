@@ -5,7 +5,7 @@
   <% @articles.each do |article| %>
     <div class="card text-center mb-5">
       <div class="card-header font-italic">
-        Created by Dammy
+        Created by <%= article.user&.username %>
       </div>
       <div class="card-body">
         <h5 class="card-title"><%= article.name %></h5>
