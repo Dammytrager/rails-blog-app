@@ -15,6 +15,9 @@ class User < ApplicationRecord
 
   has_many :articles
 
+  scope :with_no_article, lambda { where.not(id: Article.distinct.select(:user_id)) }
+  scope :with_article, lambda { where(id: Article.distinct.select(:user_id)) }
+
   has_secure_password
 
   def email_filled

@@ -1,0 +1,12 @@
+<!-- Error Message-->
+<% if model.errors.any? %>
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <%  errors = model.errors.full_messages %>
+    <p><%= placeholder %></p>
+    <ul>
+      <% errors&.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
