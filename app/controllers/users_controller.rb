@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update]
 
   def index
-    @users = User.all
+    @users = User.all.paginate(page: params[:page]).order(created_at: :desc)
   end
 
   def new
@@ -12,6 +12,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @articles = @user.articles.paginate(page: params[:page])
     @show_footer = false
   end
 
@@ -33,7 +34,7 @@ class UsersController < ApplicationController
     @user.update(user_params)
     if @user.errors&.full_messages.empty?
       flash[:notice] = 'User updated successfully'
-      redirect_to articles_path
+      redirect_to @user
     else
       render :edit
     end

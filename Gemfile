@@ -27,6 +27,9 @@ gem 'bcrypt', '~> 3.1.7'
 # Use gravtastic to get gravatar image
 gem 'gravtastic', '3.0.0'
 
+# Use will_paginate to add pagination to ActiveRecords Query
+gem 'will_paginate', '~> 3.3'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

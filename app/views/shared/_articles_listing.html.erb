@@ -1,7 +1,9 @@
+<%= render 'shared/pagination', resource: articles %>
+
 <% articles.each do |article| %>
   <div class="card text-center mb-5">
     <div class="card-header font-italic">
-      Created by <%= article.user&.username %>
+      Created by <%= link_to article.user&.username, article.user %>
     </div>
     <div class="card-body">
       <h5 class="card-title"><%= article.name %></h5>
@@ -19,3 +21,5 @@
     </div>
   </div>
 <% end %>
+
+<%= render 'shared/pagination', resource: articles %>

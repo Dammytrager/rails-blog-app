@@ -9,6 +9,8 @@ if ['development', 'test'].include? ENV['RAILS_ENV']
   Dotenv::Railtie.load
 end
 
+WillPaginate.per_page = 1
+
 module BlogApp
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.

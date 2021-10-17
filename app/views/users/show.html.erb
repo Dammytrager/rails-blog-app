@@ -2,8 +2,12 @@
 
 <%= gravatar_for @user, size: 200 %>
 
+<div class="text-center">
+  <%= link_to 'Edit Profile', edit_user_path(@user), class: 'btn btn-sm btn-outline-primary mt-4' %>
+</div>
+
 <div class="container mt-4">
   <h4 class="text-center mb-4">Articles</h4>
 
-  <%= render 'shared/articles_listing', articles: @user.articles %>
+  <%= render 'shared/articles_listing', articles: @articles %>
 </div>
