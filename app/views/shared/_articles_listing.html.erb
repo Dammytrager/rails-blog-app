@@ -1,0 +1,21 @@
+<% articles.each do |article| %>
+  <div class="card text-center mb-5">
+    <div class="card-header font-italic">
+      Created by <%= article.user&.username %>
+    </div>
+    <div class="card-body">
+      <h5 class="card-title"><%= article.name %></h5>
+      <p class="card-text"><%= article.description %></p>
+      <%= link_to 'Show', article_path(article), class: 'btn btn-sm btn-outline-primary' %>
+      <%= link_to 'Edit', edit_article_path(article), class: 'btn btn-sm btn-outline-warning' %>
+      <%= link_to 'Delete', article_path(article), class: 'btn btn-sm btn-outline-danger', method: :delete, data: {confirm: 'Are you sure you want to delete?'} %>
+    </div>
+
+    <div class="card-footer text-muted">
+      <small>
+        Created <%= time_ago_in_words(article.created_at) %> ago,
+        Updated <%= time_ago_in_words(article.updated_at) %> ago
+      </small>
+    </div>
+  </div>
+<% end %>

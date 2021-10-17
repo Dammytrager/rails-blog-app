@@ -18,7 +18,7 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    @article = Article.create(article_params)
+    @article = Article.create(article_params.merge({user: User.take}))
 
     if @article.errors&.full_messages.empty?
       flash[:notice] = 'Articles created successfully'
