@@ -7,7 +7,7 @@ module UsersHelper
 
     options = defaults.merge(args)
 
-    hash = Digest::MD5.hexdigest('damilaremalomo@gmail.com')
+    hash = Digest::MD5.hexdigest(user.email)
     gravatar_url = "#{GRAVATR_URL}/#{hash}?s=#{options[:size]}"
 
     image_tag(gravatar_url, alt: user.username, class: 'rounded mx-auto d-block mb-3')

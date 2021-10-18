@@ -9,7 +9,7 @@ if ['development', 'test'].include? ENV['RAILS_ENV']
   Dotenv::Railtie.load
 end
 
-WillPaginate.per_page = 1
+WillPaginate.per_page = 3
 
 module BlogApp
   class Application < Rails::Application
