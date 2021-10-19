@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
   end
 
   def show_footer
-    @show_footer = true
+    @show_footer = false
   end
 
 end

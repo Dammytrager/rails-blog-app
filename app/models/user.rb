@@ -24,4 +24,8 @@ class User < ApplicationRecord
     email.present?
   end
 
+  def is?(user)
+    self == user
+  end
+
 end

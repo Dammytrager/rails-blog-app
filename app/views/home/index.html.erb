@@ -4,6 +4,6 @@
   <hr class="my-4">
   <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
   <p class="lead">
-    <%= link_to "Sign up", signup_path, class: "btn btn-primary", role: "button" %>
+    <%= link_to "Sign up", signup_path, class: "btn btn-primary", role: "button" unless logged_in? %>
   </p>
 </div>

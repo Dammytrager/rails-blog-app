@@ -9,7 +9,7 @@
       <%= link_to gravatar_for(user, size: 150), user %>
       <p class="card-text"><%= pluralize(user.articles.count, 'article') %></p>
       <%= link_to 'View Profile', user, class: 'btn btn-sm btn-outline-primary' %>
-      <%= link_to 'Edit', edit_user_path(user), class: 'btn btn-sm btn-outline-warning' %>
+      <%= link_to 'Edit', edit_user_path(user), class: 'btn btn-sm btn-outline-warning' if user.is? current_user %>
     </div>
 
     <div class="card-footer text-muted">
