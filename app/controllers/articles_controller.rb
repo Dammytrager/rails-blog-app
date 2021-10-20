@@ -1,6 +1,8 @@
 class ArticlesController < ApplicationController
 
+  before_action :require_login, except: [:index]
   before_action :set_article, only: [:show, :edit, :update, :destroy]
+  before_action :correct_user?, only: [:edit, :update, :destroy]
 
   def index
     @articles = Article.all.paginate(page: params[:page]).order(created_at: :desc)
@@ -48,12 +50,18 @@ class ArticlesController < ApplicationController
   private
 
   def set_article
-    @article = Article.find(params[:id])
+    @article ||= Article.find(params[:id])
   end
 
   def article_params
     params.require(:article).permit(:name, :description)
   end
 
+  def correct_user?
+    if !@article.belongs_to_user?(current_user)
+      flash[:error] = 'You cannot change an article that does not belong to you'
+      redirect_to current_user
+    end
+  end
 
 end

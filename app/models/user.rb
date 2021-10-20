@@ -4,6 +4,11 @@ class User < ApplicationRecord
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
+  enum user_type: {
+    normal: 0,
+    admin: 1
+  }, _prefix: true
+
   validates :username, uniqueness: true, presence: true
   validates :username, length: { minimum: 3, maximum: 50 }, unless: -> { username.blank? }
 
@@ -13,7 +18,7 @@ class User < ApplicationRecord
     validates :email, format: { with: VALID_EMAIL_REGEX }
   end
 
-  has_many :articles
+  has_many :articles, dependent: :destroy
 
   scope :with_no_article, lambda { where.not(id: Article.distinct.select(:user_id)) }
   scope :with_article, lambda { where(id: Article.distinct.select(:user_id)) }

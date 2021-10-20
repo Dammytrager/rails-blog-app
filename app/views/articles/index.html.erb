@@ -4,6 +4,6 @@
   <%= render 'shared/articles_listing', articles: @articles %>
 
   <p>
-    <%= link_to 'Create Article', new_article_path %>
+    <%= link_to 'Create Article', new_article_path if logged_in? %>
   </p>
 </div>

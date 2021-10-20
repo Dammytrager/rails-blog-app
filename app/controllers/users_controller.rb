@@ -1,6 +1,9 @@
 class UsersController < ApplicationController
+  include Authable
 
-  before_action :set_user, only: [:show, :edit, :update]
+  before_action :require_login, except: [:index, :new, :create]
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :correct_user?, only: [:edit, :update, :destroy]
 
   def index
     @users = User.all.paginate(page: params[:page]).order(created_at: :desc)
@@ -41,6 +44,13 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy
+    @user.destroy
+    session[:user_id] = nil
+    flash[:notice] = 'Account and associated articles deleted successfully'
+    redirect_to articles_path
+  end
+
   private
 
   def user_params
@@ -51,6 +61,13 @@ class UsersController < ApplicationController
 
   def set_user
     @user = User.find(params[:id])
+  end
+
+  def correct_user?
+    if !@user.is?(current_user) && !current_user.user_type_admin?
+      flash[:error] = 'You cannot change another user\'s profile'
+      redirect_to current_user
+    end
   end
 
 end

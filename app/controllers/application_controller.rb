@@ -16,4 +16,13 @@ class ApplicationController < ActionController::Base
     @show_footer = false
   end
 
+  private
+
+  def require_login
+    if !logged_in?
+      flash[:error] = 'You must be Logged in'
+      redirect_to login_path
+    end
+  end
+
 end

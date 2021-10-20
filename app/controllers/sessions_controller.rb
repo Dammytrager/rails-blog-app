@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  include Authable
+
   def new
   end
 

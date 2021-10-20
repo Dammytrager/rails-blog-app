@@ -3,7 +3,15 @@
 <%= gravatar_for @user, size: 200 %>
 
 <div class="text-center">
-  <%= link_to 'Edit Profile', edit_user_path(@user), class: 'btn btn-sm btn-outline-primary mt-4' if @user.is? current_user %>
+  <% if @user.is?(current_user) || current_user.user_type_admin? %>
+    <%= link_to 'Edit Profile', edit_user_path(@user), class: 'btn btn-sm btn-outline-primary mt-4' %>
+    <%= link_to 'Delete Account',
+                @user,
+                class: 'btn btn-sm btn-outline-danger mt-4',
+                method: :delete,
+                data: { confirm: 'This action will delete this account and all the associated articles, are you sure' }
+    %>
+  <% end %>
 </div>
 
 <div class="container mt-4">
