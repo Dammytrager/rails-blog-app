@@ -9,6 +9,9 @@
         </div>
         <div class="card-body">
           <h5 class="card-title"><%= @article.name %></h5>
+          <% if @article.categories.any? %>
+            <%= render @article.categories %>
+          <% end %>
           <p class="card-text"><%= @article.description %></p>
           <% if @article.belongs_to_user? current_user %>
             <%= link_to 'Edit', edit_article_path(@article), class: 'btn btn-sm btn-outline-warning' %>

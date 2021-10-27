@@ -54,7 +54,7 @@ class ArticlesController < ApplicationController
   end
 
   def article_params
-    params.require(:article).permit(:name, :description)
+    params.require(:article).permit(:name, :description, category_ids: [])
   end
 
   def correct_user?
