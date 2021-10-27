@@ -1,0 +1,23 @@
+<%= render 'shared/pagination', resource: @categories %>
+
+<% @categories.each do |category| %>
+  <div class="card text-center mb-5">
+    <div class="card-body">
+      <h5 class="card-title"><%= category.name %></h5>
+      <%= link_to 'Show', category, class: 'btn btn-sm btn-outline-primary' %>
+      <%# if category.belongs_to_user? current_user %>
+        <%#= link_to 'Edit', edit_article_path(category), class: 'btn btn-sm btn-outline-warning' %>
+        <%#= link_to 'Delete', article_path(category), class: 'btn btn-sm btn-outline-danger', method: :delete, data: { confirm: 'Are you sure you want to delete?'} %>
+      <%# end %>
+    </div>
+
+    <div class="card-footer text-muted">
+      <small>
+        Created <%= time_ago_in_words(category.created_at) %> ago,
+        Updated <%= time_ago_in_words(category.updated_at) %> ago
+      </small>
+    </div>
+  </div>
+<% end %>
+
+<%= render 'shared/pagination', resource: @categories %>

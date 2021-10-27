@@ -1,0 +1,29 @@
+<h2 class="text-center mb-3">Showing Category Details</h2>
+
+<div class="container">
+  <div class="row mx-0">
+    <div class="col-md-6 offset-md-3">
+      <div class="card text-center mb-5">
+        <div class="card-body">
+          <h5 class="card-title"><%= @category.name %></h5>
+<!--          <p class="card-text"><%#= @article.description %></p>-->
+          <%# if @article.belongs_to_user? current_user %>
+            <%#= link_to 'Edit', edit_article_path(@article), class: 'btn btn-sm btn-outline-warning' %>
+            <%#= link_to 'Delete', article_path(@article), class: 'btn btn-sm btn-outline-danger', method: :delete, data: {confirm: 'Are you sure you want to delete?'} %>
+          <%# end %>
+        </div>
+
+        <div class="card-footer text-muted">
+          <small>
+            Created <%= time_ago_in_words(@category.created_at) %> ago,
+            Updated <%= time_ago_in_words(@category.updated_at) %> ago
+          </small>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<p class="text-center">
+  <%= link_to 'Go to categories listings', categories_path %>
+</p>

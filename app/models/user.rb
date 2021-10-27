@@ -13,7 +13,7 @@ class User < ApplicationRecord
   validates :username, length: { minimum: 3, maximum: 50 }, unless: -> { username.blank? }
 
   validates :email, uniqueness: true, presence: true
-  with_options if: :email_filled do
+  with_options if: :email_filled? do
     validates :email, length: { minimum: 3, maximum: 50 }
     validates :email, format: { with: VALID_EMAIL_REGEX }
   end
@@ -25,7 +25,7 @@ class User < ApplicationRecord
 
   has_secure_password
 
-  def email_filled
+  def email_filled?
     email.present?
   end
 

@@ -1,0 +1,9 @@
+<div class="container">
+  <h2 class="mb-5 text-center">Categories Listing Page</h2>
+
+  <%= render 'categories_listing' %>
+
+  <p>
+    <%= link_to 'Create Category', new_category_path if logged_in? && current_user.user_type_admin? %>
+  </p>
+</div>
